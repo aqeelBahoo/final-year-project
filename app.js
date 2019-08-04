@@ -7,8 +7,6 @@ var cors = require('cors')
 var app = express();
 
 app.use(cors());
-
-
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/mean-angular6')
   .then(() =>  console.log('connection succesful'))
