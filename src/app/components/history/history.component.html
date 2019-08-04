@@ -1,0 +1,27 @@
+<div fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="50px" class="full-height">
+  <h1>
+   History
+  </h1>
+
+  <div fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="50px" style="width: 60%">
+    <mat-card *ngFor="let load of loadsHistory">
+      <mat-card-header>
+        <mat-card-title>
+          <h2>Number: {{load.number}}</h2>
+        </mat-card-title>
+        <mat-card-subtitle>
+          <h2>Rs. {{load.rupees}}</h2>
+          <h2>Sim. {{load.network}}</h2>
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          {{load.date}}
+        </p>
+      </mat-card-content>
+      <mat-card-actions fxLayout="row" fxLayoutAlign="end start">
+        <button mat-raised-button color="warn" (click)="delete(load._id)">Delete</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

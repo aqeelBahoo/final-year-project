@@ -1,0 +1,96 @@
+<!-- <div class="developer">
+  Software Developer: <br> Mr. Aqeel Bahoo
+</div> -->
+<div fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="50px" class="full-height">
+  <h1>
+    Mobile Network Balance Software
+  </h1>
+
+
+  <!--  search -->
+  <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="50px">
+    <div>
+      <mat-form-field>
+        <mat-label>Search By</mat-label>
+        <mat-select [formControl]="searchBy">
+          <mat-option value="all">
+            Network and Number
+          </mat-option>
+          <mat-option value="any">
+            Network or Number
+          </mat-option>
+
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Search Number" [formControl]="searchNumber">
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field>
+        <mat-label>Search Network</mat-label>
+        <mat-select [formControl]="searchNetwork">
+          <mat-option *ngFor="let network of networks" [value]="network">
+            {{network}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <button mat-raised-button color="primary" (click)="search()">SEARCH</button>
+    </div>
+  </div>
+
+  <!--  load -->
+  <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="50px">
+    <mat-form-field>
+      <mat-label>Select Network</mat-label>
+      <mat-select [formControl]="network">
+
+        <mat-option *ngFor="let network of networks" [value]="network">
+          {{network}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Enter Number" [formControl]="cellNumber">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="ENTER RUPEES" [formControl]="rupees">
+    </mat-form-field>
+
+    <div>
+      <button mat-raised-button color="primary" (click)="load()">LOAD</button>
+    </div>
+  </div>
+
+  <!-- data -->
+  <div fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="50px" style="width: 60%">
+    <mat-card *ngFor="let load of loads">
+      <mat-card-header>
+        <mat-card-title>
+          <h2>Number: {{load.number}}</h2>
+        </mat-card-title>
+        <mat-card-subtitle>
+          <h2>Rs. {{load.rupees}}</h2>
+          <h2>Sim. {{load.network}}</h2>
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          {{load.date}}
+        </p>
+      </mat-card-content>
+      <!--  <mat-card-actions fxLayout="row" fxLayoutAlign="end start">
+        <button mat-raised-button color="warn" (click)="delete(load._id)">Delete</button>
+      </mat-card-actions> -->
+    </mat-card>
+  </div>
+
+</div>

@@ -1,0 +1,38 @@
+<div>
+  <mat-toolbar>
+    <div fxLayout="row" fxLayoutAlign="space-between start" style="width: 100%">
+      <div>
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+
+      <div>
+        <button mat-icon-button (click)="logout()">
+          <mat-icon>exit_to_app</mat-icon>
+        </button>
+      </div>
+    </div>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav mode="side">
+      <mat-list style="width: 170px;">
+        <mat-list-item routerLink="/history" class="cursor">
+          <mat-icon matListAvatar class="margin-top">history</mat-icon>
+          <div matLine> History</div>
+        </mat-list-item>
+
+        <mat-list-item routerLink="/dashboard" class="cursor">
+          <!-- <img matListAvatar src="..." alt="..."> -->
+          <mat-icon matListAvatar class="margin-top">dashboard</mat-icon>
+          <div matLine> Dashboard</div>
+        </mat-list-item>
+      </mat-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
