@@ -8,7 +8,7 @@ var app = express();
 
 app.use(cors());
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/mean-angular6')
+mongoose.connect('mongodb://localhost/network-easyload')
   .then(() =>  console.log('connection succesful'))
   .catch((err) => console.error(err));
 

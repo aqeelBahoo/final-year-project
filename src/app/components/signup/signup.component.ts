@@ -33,13 +33,16 @@ export class SignupComponent {
       password: data.password,
       name: data.name
     };
-    this.api.createUser(user).subscribe((res: any) => {
-      this.userService.userData.next(res.data);
-      this.userService.clearToken();
-      this.userService.setToken(res.data._id);
-      this.openSnackBar('User has created successfully', 'SUCCESS');
-      this.router.navigate(['dashboard']);
-    });
+    this.api.createUser(user).subscribe(
+      (res: any) => {
+        this.userService.userData.next(res.data);
+        this.userService.clearToken();
+        this.userService.setToken(res.data._id);
+        this.openSnackBar('User created successfully', 'SUCCESS');
+        this.router.navigate(['dashboard']);
+      }, (err) => {
+        this.openSnackBar(err.message, 'ERROR');
+      });
   }
 
   private openSnackBar(message, action) {

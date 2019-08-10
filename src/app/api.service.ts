@@ -38,7 +38,7 @@ export class ApiService {
 
   getLoads(): Observable<any> {
     const token = this.userService.getToken();
-    return this.http.get(`${apiUrl}/load/${token}`, httpOptions).pipe(
+    return this.http.get(`${apiUrl}/load/history/${token}`, httpOptions).pipe(
       map(this.extractData),
       catchError(this.handleError));
   }
@@ -50,12 +50,14 @@ export class ApiService {
   }
 
   searchLoad(data): Observable<any> {
-    return this.http.post(`${apiUrl}/load/search`, data, httpOptions).pipe(
+    const token = this.userService.getToken();
+    return this.http.post(`${apiUrl}/load/search/${token}`, data, httpOptions).pipe(
       map(this.extractData),
       catchError(this.handleError));
   }
 
   postLoad(data): Observable<any> {
+    data.user_id = this.userService.getToken();
     return this.http.post(`${apiUrl}/load`, data, httpOptions)
       .pipe(
         catchError(this.handleError)
@@ -69,7 +71,7 @@ export class ApiService {
   }
 
   deleteLoad(id: number): Observable<{}> {
-    const url = `${apiUrl}/'load'/${id}`;
+    const url = `${apiUrl}/load/${id}`;
     return this.http.delete(url, httpOptions)
       .pipe(
         catchError(this.handleError)

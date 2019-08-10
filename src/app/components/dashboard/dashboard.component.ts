@@ -54,7 +54,7 @@ export class DashboardComponent {
       number: this.cellNumber.value,
       rupees: this.rupees.value,
       network: this.network.value,
-      date: new Date().toUTCString()
+      date: new Date().toLocaleString()
     };
     this.apiService.postLoad(data).subscribe(() => {
       // this.getLoads();
